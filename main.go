@@ -33,7 +33,6 @@ func getImage(url string) (err error) {
 	}
 
 	imageUrlList = getImageUrl(url)
-	// fmt.Println(len(imageUrlList), imageUrlList)
 
 	// download the image.
 	for _, imgUrl := range imageUrlList {
@@ -85,6 +84,5 @@ func getImageUrl(url string) (imageUrls []string) {
 	imgUrlMatcher := regexp.MustCompile("[a-zA-z]+://[^\\s]*[s=]\\d{3}")
 
 	imgUrls := imgUrlMatcher.FindAllString(string(body), -1)
-	// fmt.Println(len(imgUrls), imgUrls)
 	return imgUrls
 }
