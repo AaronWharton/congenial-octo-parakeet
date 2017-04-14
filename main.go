@@ -28,9 +28,8 @@ func getImage(url string) (err error) {
 	// create the storage folder
 	if err := os.Mkdir(path.Dir(downloadDir), os.ModePerm); err != nil {
 		fmt.Println("file is already exisist!")
-	} else {
-		fmt.Println("Storage folder was created.")
 	}
+	fmt.Println("Storage folder was created.")
 
 	imageUrlList = getImageUrl(url)
 
@@ -62,7 +61,7 @@ func getImg(url string) (n int64, err error) {
 	defer resp.Body.Close()
 	pix, err := ioutil.ReadAll(resp.Body)
 	n, err = io.Copy(out, bytes.NewReader(pix))
-	<- num
+	<-num
 	return
 }
 
