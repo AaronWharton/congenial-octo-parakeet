@@ -25,11 +25,7 @@ func main() {
 
 func getImage(url string) (err error) {
 
-	// create the storage folder
-	if err := os.Mkdir(path.Dir(downloadDir), os.ModePerm); err != nil {
-		fmt.Println("file is already exisist!")
-	}
-	fmt.Println("Storage folder was created.")
+	InitFolder()
 
 	imageUrlList = getImageUrl(url)
 
@@ -84,4 +80,14 @@ func getImageUrl(url string) (imageUrls []string) {
 
 	imgUrls := imgUrlMatcher.FindAllString(string(body), -1)
 	return imgUrls
+}
+
+func InitFolder() (err error) {
+	// create the storage folder
+	if err := os.Mkdir(path.Dir(downloadDir), os.ModePerm); err != nil {
+		fmt.Println("file is already exisist!")
+		return err
+	}
+	fmt.Println("Storage folder was created.")
+	return nil
 }
