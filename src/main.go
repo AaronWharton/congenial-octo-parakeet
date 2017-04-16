@@ -51,7 +51,7 @@ func getImg(url string) (n int64, err error) {
 		name = paths[len(paths)-1]
 	}
 	fmt.Println(name)
-	out, err := os.Create("img/" + string(name) + ".jpg")
+	out, err := os.Create(downloadDir + string(name) + ".jpg")
 	defer out.Close()
 	resp, err := http.Get(url)
 	defer resp.Body.Close()
